@@ -1,0 +1,9 @@
+{% if not user.is_activated %}
+
+<h3>Ваш email еще не активирован.</h3>
+<p>
+    Вы должны подтвердить ваш аккаунт, иначе он может быть удален. Проверте ваш email для верификакций.
+    <a href="javascript:;" data-request="onSendActivationEmail">отправить email повторно.</a>.
+</p>
+
+{% endif %}

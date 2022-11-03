@@ -1,0 +1,25 @@
+url = "/"
+layout = "default"
+title = "главная"
+==
+<div class="the-intro min-vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center px-md-2">
+                <img class="img-fluid mb-3" src="{{ 'assets/images/bootstrap.svg' | theme }}" alt="Bootstrap Starter Kit" width="270" height="227">
+                <h1 class="display-4 fw-bold">{{ this.theme.getConfig.name }}</h1>
+                <div class="d-block mb-5">
+                    <small class="lead fw-normal">
+                        {{ this.theme.getConfig.description }} <br>
+                        {% if user %}
+                            Hi, {{ user.name }}.
+                        {% else %}
+                        <a href="{{ 'register' }}" class="link">регистрация</a>
+                        <a href="{{ 'login' }}" class="link">авторизация</a>
+                        {% endif %}
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

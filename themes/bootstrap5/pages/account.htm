@@ -1,0 +1,38 @@
+url = "/account"
+layout = "default"
+title = "аккаунт пользователя"
+
+[session]
+security = "user"
+redirect = "login"
+
+[account]
+paramCode = "code"
+forceSecure = 0
+requirePassword = 0
+==
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">привет, <strong class="text-primary">{{ user.name }}</strong>
+                </div>
+                <div class="card-body">
+                    <p>добавить действия пользователя. (позже)</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h6>текущие настройки</h6>
+                </div>
+                <div class="card-body">
+                    {% partial 'auth/activation_check' %}
+                    {% partial 'auth/update' %}
+                    {% partial 'auth/deactivate_link' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
