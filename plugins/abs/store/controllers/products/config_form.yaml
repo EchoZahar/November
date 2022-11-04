@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Product
+
+# Model Form Field configuration
+form: $/abs/store/models/product/fields.yaml
+
+# Model Class name
+modelClass: Abs\Store\Models\Product
+
+# Default redirect location
+defaultRedirect: abs/store/products
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: abs/store/products/update/:id
+    redirectClose: abs/store/products
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: abs/store/products
+    redirectClose: abs/store/products
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

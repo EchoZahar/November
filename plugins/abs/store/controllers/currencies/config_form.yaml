@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Currency
+
+# Model Form Field configuration
+form: $/abs/store/models/currency/fields.yaml
+
+# Model Class name
+modelClass: Abs\Store\Models\Currency
+
+# Default redirect location
+defaultRedirect: abs/store/currencies
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: abs/store/currencies/update/:id
+    redirectClose: abs/store/currencies
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: abs/store/currencies
+    redirectClose: abs/store/currencies
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Price
+
+# Model Form Field configuration
+form: $/abs/store/models/price/fields.yaml
+
+# Model Class name
+modelClass: Abs\Store\Models\Price
+
+# Default redirect location
+defaultRedirect: abs/store/prices
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: abs/store/prices/update/:id
+    redirectClose: abs/store/prices
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: abs/store/prices
+    redirectClose: abs/store/prices
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title
