@@ -3,6 +3,82 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
+
+    is_published:
+        label: публикация продукта
+        type: switch
+        span: row
+        spanClass: col-md-6
+
+    categories:
+        label: категория продукта
+        type: relation
+        nameForm: name
+        span: row
+        spanClass: col-md-6
+
+    name:
+        label: наименование
+        placeholder: введите название
+        type: text
+        span: row
+        spanClass: col-5
+
+    slug:
+        label: сгенерированный url
+        placeholder: автоматическая генерация url
+        type: text
+        preset: name
+        span: row
+        spanClass: col-4
+
+    default_price:
+        label: установить цену
+        type: number
+        mode: amountcurrency
+        placeholder: 'введите в формате 0.00'
+        validation: 'required|numeric|between:0,99.99'
+        span: row
+        spanClass: col-2
+
+    currency:
+        label: валюта
+        type: currencyDefault
         disabled: true
+        span: row
+        spanClass: col-1
+
+    description:
+        label: описание товара
+        comment:
+        commentAbove: введите описание товара, это не обязательное поле.
+        placeholder: 'введите в формате 0.00'
+        type: richeditor
+        size: large
+        span: full
+
+    preview:
+        label: превью продукта
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        type: fileupload
+        span: row
+        spanClass: col-6
+
+    product_images:
+        label: загрузить изображения продукта
+        mode: image
+        useCaption: 0
+        thumbOptions:
+            mode: crop
+            extension: auto
+        type: fileupload
+        imageHeight: '1080'
+        imageWidth: '1920'
+        mimeTypes: jpg,jpeg,png
+        deferredBinding: true
+        span: row
+        spanClass: col-6

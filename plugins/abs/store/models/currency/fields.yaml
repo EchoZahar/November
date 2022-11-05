@@ -3,6 +3,27 @@
 # ===================================
 
 fields:
-    id:
-        label: ID
-        disabled: true
+    is_published:
+        label: публикация
+        type: switch
+        default: false
+        span: row
+        spanClass: col-md-3
+
+    name:
+        label: страна
+        type: text
+        span: row
+        spanClass: col-md-3
+
+    code:
+        label: код валюты
+        type: text
+        span: row
+        spanClass: col-md-3
+
+    symbol:
+        label: символ валюты
+        type: text
+        span: row
+        spanClass: col-md-3

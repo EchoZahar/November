@@ -1,0 +1,21 @@
+scopes:
+    category:
+        label: 'фильтр по категории'
+        modelClass: Abs\Store\Models\Category
+        nameFrom: name
+        scope: filterByCategory
+
+    published:
+        label: 'публикация'
+        type: switch
+        default: 2
+        conditions:
+            - is_published <> true
+            - is_published = true
+
+    created_at:
+        label: 'фильтр по дате'
+        type: date
+        conditions:
+            after: created_at >= ':value'
+            between: created_at >= ':after' AND created_at <= ':before'

@@ -1,6 +1,8 @@
 <?php namespace Abs\Store\Models;
 
+use Illuminate\Database\Query\Builder;
 use Model;
+use System\Models\File;
 
 /**
  * Product Model
@@ -60,13 +62,29 @@ class Product extends Model
     /**
      * @var array hasOne and other relations
      */
-    public $hasOne = [];
-    public $hasMany = [];
-    public $belongsTo = [];
-    public $belongsToMany = [];
-    public $morphTo = [];
-    public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
+    public $hasOne = [
+       // 'currency' => [Currency::class],
+    ];
+
+    public $belongsToMany = [
+        'categories' => [
+            Category::class,
+            'table' => 'abs_store_category_product',
+            'key' => 'product_id', 'otherKey' => 'category_id'
+        ],
+    ];
+
+    public $attachOne = [
+        'preview' => [File::class]
+    ];
+    public $attachMany = [
+        'product_images' => [File::class],
+    ];
+
+    public function scopeFilterByCategory(Builder $query, $filter)
+    {
+        return $query->whereHas('categories', function ($q) use  ($filter) {
+            $q->whereIn('category_id', $filter);
+        });
+    }
 }

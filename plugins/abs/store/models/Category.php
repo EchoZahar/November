@@ -1,72 +1,46 @@
 <?php namespace Abs\Store\Models;
 
 use Model;
+use October\Rain\Database\Traits\NestedTree;
+use October\Rain\Database\Traits\Sluggable;
+use October\Rain\Database\Traits\Sortable;
+use October\Rain\Database\Traits\Validation;
+use System\Models\File;
 
 /**
  * Category Model
  */
 class Category extends Model
 {
-    use \October\Rain\Database\Traits\Validation;
+    use Validation, Sluggable, NestedTree;
 
-    /**
-     * @var string table associated with the model
-     */
     public $table = 'abs_store_categories';
 
-    /**
-     * @var array guarded attributes aren't mass assignable
-     */
+    public $slugs = ['slug' => 'name'];
+
     protected $guarded = ['*'];
 
-    /**
-     * @var array fillable attributes are mass assignable
-     */
     protected $fillable = [];
 
-    /**
-     * @var array rules for validation
-     */
-    public $rules = [];
+    public $rules = [
+        'name' => ['required', 'string', 'min:3', 'max:150'],
+        'description'=> ['nullable', 'string', 'min:3', 'max:1000'],
+        'preview' => ['required']
+    ];
 
-    /**
-     * @var array Attributes to be cast to native types
-     */
-    protected $casts = [];
-
-    /**
-     * @var array jsonable attribute names that are json encoded and decoded from the database
-     */
-    protected $jsonable = [];
-
-    /**
-     * @var array appends attributes to the API representation of the model (ex. toArray())
-     */
-    protected $appends = [];
-
-    /**
-     * @var array hidden attributes removed from the API representation of the model (ex. toArray())
-     */
-    protected $hidden = [];
-
-    /**
-     * @var array dates attributes that should be mutated to dates
-     */
     protected $dates = [
         'created_at',
         'updated_at'
     ];
 
-    /**
-     * @var array hasOne and other relations
-     */
     public $hasOne = [];
     public $hasMany = [];
     public $belongsTo = [];
-    public $belongsToMany = [];
-    public $morphTo = [];
-    public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [];
-    public $attachMany = [];
+    public $belongsToMany = [
+        'products' => [Product::class, 'table' => 'abs_store_category_product'],
+    ];
+
+    public $attachOne = [
+        'preview' => [File::class],
+    ];
 }

@@ -5,4 +5,41 @@
 columns:
     id:
         label: ID
+        searchable: false
+
+    preview:
+        label: превью
+        type: image
+        width: '150px'
+        searchable: false
+        sortable: false
+
+    name:
+        label: наименование
         searchable: true
+
+    description:
+        label: описание
+        searchable: false
+        sortable: false
+
+    products_count:
+        label: 'кол-во продуктов в категории'
+        relation: products
+        relationCount: true
+        type: number
+
+    created_at:
+        label: дата создания
+        searchable: false
+        sortable: false
+        type: datetime
+        format: d.m.Y H:i
+
+    updated_at:
+        label: дата обновления
+        searchable: false
+        sortable: false
+        type: datetime
+        format: d.m.Y H:i
+

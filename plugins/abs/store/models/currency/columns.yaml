@@ -5,4 +5,40 @@
 columns:
     id:
         label: ID
+        searchable: false
+        sortable: false
+
+    name:
+        label: страна
         searchable: true
+        sortable: true
+
+    code:
+        label: код валюты
+        searchable: true
+        sortable: true
+
+    symbol:
+        label: символ валюты
+        searchable: false
+        sortable: false
+
+    is_published:
+        label: публикация
+        type: switch
+        sortable: false
+        searchable: false
+
+    created_at:
+        label: дата добавления
+        type: datetime
+        format: d.m.Y H:i
+        searchable: false
+        sortable: false
+
+    updated_at:
+        label: дата обновления
+        type: datetime
+        format: d.m.Y H:i
+        searchable: false
+        sortable: false

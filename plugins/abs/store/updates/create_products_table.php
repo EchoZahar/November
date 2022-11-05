@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->boolean('is_published')->default(false);
             $table->float('default_price', 8, 2)->default(0.00);
+            $table->string('currency', 4)->default('RUB');
             $table->timestamps();
         });
     }

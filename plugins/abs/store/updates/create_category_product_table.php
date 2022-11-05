@@ -17,15 +17,21 @@ class CreateCategoryProductTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->primary(['category_id', 'product_id']);
-//            $table->foreign('category_id')->references('id')->on('abs_store_categories')
-//                ->cascadeOnUpdate()->cascadeOnDelete();
-//            $table->foreign('product_id')->references('id')->on('abs_store_products')
-//                ->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('abs_score_category_product');
+
+        if (Schema::hasTable('abs_store_category_product')) {
+//            Schema::table('abs_store_products', function (Blueprint $table) {
+//                $table->dropPrimary('category_id');
+//                $table->dropPrimary('product_id');
+//                $table->dropIndex('product_id');
+//            });
+            Schema::drop('abs_store_category_product');
+        }
+
+
     }
 }

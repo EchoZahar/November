@@ -5,4 +5,50 @@
 columns:
     id:
         label: ID
-        searchable: true
+        searchable: false
+
+    preview:
+        label: превью
+        type: image
+        width: 150
+        searchable: false
+        sortable: false
+
+    name:
+        label: наименование
+        type: text
+
+    categories:
+        label: Категории
+        relation: categories
+        valueFrom: name
+        searchable: false
+        sortable: false
+
+    default_price:
+        label: цена
+        type: number
+        format: "%.2f"
+
+    currency:
+        label: валюта
+
+    created_at:
+        label: дата создания
+        type: datetime
+        format: d.m.Y H:i
+        sortable: false
+        searchable: false
+
+    updated_at:
+        label: дата обновления
+        type: datetime
+        format: d.m.Y H:i
+        sortable: false
+        searchable: false
+
+    is_published:
+        label: публикация
+        type: switch
+        sortable: false
+        searchable: false
