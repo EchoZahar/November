@@ -1,0 +1,49 @@
+<div class="card-body">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-12">
+            <h5>{{ product.name }}</h5>
+            <img src="{{ product.preview.path }}" class="card-img-top" alt="...">
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            {% if product.product_images.count > 0 %}
+                <div class="text-center">
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for image in product.product_images %}
+                                <div class="carousel-item active">
+                                    <img src="{{ image.path }}" class="d-block w-100" alt="...">
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-center text-primary">изображении не найдено, запросить фото продукта у продавца</p>
+                <p class="text-center">
+                    <button type="button" class="btn btn-outline-primary">отправить запрос</button>
+                </p>
+            {% endif %}
+            <div class="text-body">
+                {{ product.description | raw }}
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="card-footer">
+    <div class="row justify-content-center">
+        <div class="col-md-6">Возможно какая то доп инфа.</div>
+        <div class="col-md-6 text-end">
+            <small>цена продукта: </small><strong>{{ product.default_price }}</strong> {{ product.currency }}
+            <button type="button" class="btn btn-outline-primary">закинуть в корзину</button>
+        </div>
+    </div>
+</div>

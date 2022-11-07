@@ -3,10 +3,14 @@
     <div class="col-md-4">
         <div class="card">
             <a href="/categories/{{ category.slug }}">
-            <img src="{{ category.preview.path }}" class="card-img-top" alt="...">
-            <div class="card-header">
-                <h6>{{ category.name }}</h6>
-            </div>
+                <picture>
+                    <source srcset="{{ category.preview.getThumb(250, 150, {'mode':'crop','extension':'webp'}) }}" type="image/webp">
+                    <source srcset="{{ category.preview.getThumb(250, 150, {'mode':'crop','extension':'jpg'}) }}" type="image/jpeg">
+                    <img src="{{ category.preview.getThumb(200, 100, {'mode':'crop','extension':'jpg'}) }}" alt="{{ item.image.title }}">
+                </picture>
+                <div class="card-header">
+                    <h6>{{ category.name }}</h6>
+                </div>
             </a>
             <div class="card-body">
                 {% if not category.description.length %}

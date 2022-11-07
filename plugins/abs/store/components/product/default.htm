@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-12 col-sm-12">
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <a class="btn btn-outline-primary"
+                           href="{{ 'store/categories' | page }}/{{ __SELF__.productCategory.slug }}"
+                           title="назад к выбранной категории"
+                        >{{ __SELF__.productCategory.name }}</a>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <small>цена продукта: </small><strong>{{ __SELF__.product.default_price }}</strong> {{ __SELF__.product.currency }}
+                        <button type="button" class="btn btn-outline-primary">закинуть в корзину</button>
+                    </div>
+                </div>
+
+            </div>
+            {% if __SELF__.product is not empty %}
+                {% partial __SELF__~"::product_detail" product = __SELF__.product %}
+            {% else %}
+                <div class="card-body">
+                    <div class="text-center">
+                        <strong>Возможно ошибка отображения, продукт пуст !</strong>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+

@@ -33,7 +33,7 @@ class Plugin extends PluginBase
         return [
             AllCategories::class    => 'categories',
             OneCategory::class      => 'category',
-            Product::class          => 'products',
+            Product::class          => 'product',
         ];
     }
 
