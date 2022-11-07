@@ -1,0 +1,24 @@
+{% for category in categories %}
+<div class="col-md-4">
+    <div class="card">
+        <a href="categories/{{ category.slug }}">
+        <img src="{{ category.preview.path }}" class="card-img-top" alt="...">
+        <div class="card-header">
+            <h6>{{ category.name }}</h6>
+        </div>
+        </a>
+        <div class="card-body">
+            {% if not category.description.length %}
+            <p class="text-body">{{ category.description | raw }}</p>
+            {% endif %}
+            <p class="text-body">найдено продуктов: {{ category.products.count ?? 0 }}</p>
+        </div>
+
+    </div>
+</div>
+{% if category.children %}
+<div class="col-md-8">
+    {% partial __SELF__~"::list_children_categories" categories = category.children %}
+</div>
+{% endif %}
+{% endfor %}

@@ -1,0 +1,20 @@
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div class="card">
+            <img src="{{ category.preview.path }}" class="card-img-top" alt="...">
+            <div class="card-header">
+                <h6>{{ category.name }}</h6>
+            </div>
+            <div class="card-body">
+                {% if not category.description %}
+                    <p class="text-body">{{ category.description | raw }}</p>
+                {% else %}
+                    <p class="text-body">описания не добавлено</p>
+                {% endif %}
+                <p class="text-body">продуктов найдено: <strong>{{ category.products.count ?? 0 }}</strong></p>
+            </div>
+        </div>
+    </div>
+    {% partial __SELF__~"::category_products" %}
+</div>
+

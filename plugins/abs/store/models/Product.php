@@ -1,6 +1,7 @@
 <?php namespace Abs\Store\Models;
 
 use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Str;
 use Model;
 use System\Models\File;
 
@@ -59,13 +60,6 @@ class Product extends Model
         'updated_at'
     ];
 
-    /**
-     * @var array hasOne and other relations
-     */
-    public $hasOne = [
-       // 'currency' => [Currency::class],
-    ];
-
     public $belongsToMany = [
         'categories' => [
             Category::class,
@@ -77,6 +71,7 @@ class Product extends Model
     public $attachOne = [
         'preview' => [File::class]
     ];
+
     public $attachMany = [
         'product_images' => [File::class],
     ];
@@ -87,4 +82,10 @@ class Product extends Model
             $q->whereIn('category_id', $filter);
         });
     }
+
+    public function getShortDescriptionAttribute()
+    {
+        return $this->description = Str::limit($this->description, 100, '...');
+    }
+
 }
